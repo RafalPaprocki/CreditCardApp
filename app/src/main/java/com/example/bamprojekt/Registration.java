@@ -2,6 +2,7 @@ package com.example.bamprojekt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,7 +11,7 @@ import android.widget.Toast;
 import static com.example.bamprojekt.HashGenerator.generateHash;
 import static com.example.bamprojekt.InputValidator.validateUser;
 
-public class Register extends AppCompatActivity {
+public class Registration extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +19,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
     }
 
-    public void registerUser(View view) {
+    public void register(View view) {
         EditText username = (EditText) findViewById(R.id.username);
         EditText password = (EditText) findViewById(R.id.password);
 
@@ -34,12 +35,23 @@ public class Register extends AppCompatActivity {
 
         AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
         UserDao userDao = appDatabase.userDao();
-        new Thread(() ->insertUser(newUser, userDao))
+        new Thread(() -> registerUser(newUser, userDao))
                 .start();
     }
 
-    private void insertUser(User user, UserDao userDao){
+    private void registerUser(User user, UserDao userDao) {
+        if (isUsernameExist(user.username, userDao)) {
+            runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User already exist", Toast.LENGTH_SHORT).show());
+            return;
+        }
         userDao.registerUser(user);
-        runOnUiThread(() ->  Toast.makeText(getApplicationContext(),"User successfully registered, you can now log in", Toast.LENGTH_SHORT).show());
+        runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User successfully registered, you can now log in", Toast.LENGTH_SHORT).show());
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    private boolean isUsernameExist(String username, UserDao userDao) {
+        User user = userDao.getUserByUsername(username);
+        return user != null;
     }
 }

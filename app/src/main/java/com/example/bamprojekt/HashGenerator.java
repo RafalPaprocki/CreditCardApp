@@ -12,7 +12,7 @@ public class HashGenerator {
         try{
             MessageDigest md = MessageDigest.getInstance("SHA-512");
             byte[] hashedPassword = md.digest(hashingEntry.getBytes(StandardCharsets.UTF_8));
-            hashedString = hashedPassword.toString();
+            hashedString = new String(hashedPassword, StandardCharsets.UTF_8);
 
         } catch(NoSuchAlgorithmException ex){
             Log.d("Exception", "Bad name of the algorithm " + ex.getStackTrace());

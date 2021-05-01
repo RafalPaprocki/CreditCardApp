@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser(String username, String password, UserDao userDao){
         User user = userDao.getUserByUsername(username);
-        if(user == null || user.getPassword() != password) {
+        if(user == null || !user.getPassword().equals(password)) {
             runOnUiThread(() ->  Toast.makeText(getApplicationContext(),"Invalid username or password", Toast.LENGTH_SHORT).show());
             return;
         }
