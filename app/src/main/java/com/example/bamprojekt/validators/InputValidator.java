@@ -1,5 +1,6 @@
 package com.example.bamprojekt.validators;
 
+import com.example.bamprojekt.models.CreditCard;
 import com.example.bamprojekt.models.User;
 
 public class InputValidator {

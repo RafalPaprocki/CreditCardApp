@@ -6,7 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.bamprojekt.dao.CreditCardDao;
 import com.example.bamprojekt.dao.UserDao;
+import com.example.bamprojekt.models.CreditCard;
 import com.example.bamprojekt.models.User;
 
 @Database(entities = {User.class}, version = 3)
@@ -25,5 +27,5 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract UserDao userDao();
-    public abstract 
+    public abstract CreditCardDao creditCardDao();
 }
