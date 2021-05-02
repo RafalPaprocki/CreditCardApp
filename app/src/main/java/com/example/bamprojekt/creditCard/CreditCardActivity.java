@@ -1,8 +1,10 @@
-package com.example.bamprojekt;
+package com.example.bamprojekt.creditCard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.bamprojekt.R;
 
 public class CreditCardActivity extends AppCompatActivity {
 

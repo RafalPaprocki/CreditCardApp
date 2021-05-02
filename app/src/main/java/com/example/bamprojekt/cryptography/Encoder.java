@@ -1,4 +1,4 @@
-package com.example.bamprojekt;
+package com.example.bamprojekt.cryptography;
 
 import java.security.MessageDigest;
 

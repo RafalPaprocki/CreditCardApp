@@ -1,4 +1,4 @@
-package com.example.bamprojekt;
+package com.example.bamprojekt.autorization;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static com.example.bamprojekt.HashGenerator.generateHash;
-import static com.example.bamprojekt.InputValidator.validateUser;
+import com.example.bamprojekt.AppDatabase;
+import com.example.bamprojekt.R;
+import com.example.bamprojekt.models.User;
+import com.example.bamprojekt.dao.UserDao;
+
+import static com.example.bamprojekt.cryptography.HashGenerator.generateHash;
+import static com.example.bamprojekt.validators.InputValidator.validateUser;
 
 public class Registration extends AppCompatActivity {
 
@@ -40,7 +45,7 @@ public class Registration extends AppCompatActivity {
     }
 
     private void registerUser(User user, UserDao userDao) {
-        if (isUsernameExist(user.username, userDao)) {
+        if (isUsernameExist(user.getUsername(), userDao)) {
             runOnUiThread(() -> Toast.makeText(getApplicationContext(), "User already exist", Toast.LENGTH_SHORT).show());
             return;
         }
@@ -52,6 +57,7 @@ public class Registration extends AppCompatActivity {
 
     private boolean isUsernameExist(String username, UserDao userDao) {
         User user = userDao.getUserByUsername(username);
+
         return user != null;
     }
 }

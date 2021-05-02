@@ -1,4 +1,4 @@
-package com.example.bamprojekt;
+package com.example.bamprojekt.autorization;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import static com.example.bamprojekt.HashGenerator.generateHash;
+import com.example.bamprojekt.AppDatabase;
+import com.example.bamprojekt.R;
+import com.example.bamprojekt.models.User;
+import com.example.bamprojekt.dao.UserDao;
+import com.example.bamprojekt.creditCard.CreditCardActivity;
+
+import static com.example.bamprojekt.cryptography.HashGenerator.generateHash;
 
 public class LoginActivity extends AppCompatActivity {
     @Override

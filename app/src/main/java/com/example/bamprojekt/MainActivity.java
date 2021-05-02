@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.bamprojekt.autorization.LoginActivity;
+import com.example.bamprojekt.autorization.Registration;
+
 
 public class MainActivity extends AppCompatActivity {
     @Override

@@ -1,4 +1,4 @@
-package com.example.bamprojekt;
+package com.example.bamprojekt.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
