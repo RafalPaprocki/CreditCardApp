@@ -20,10 +20,11 @@ import static com.example.bamprojekt.cryptography.HashGenerator.generateHash;
 
 public class CreditCardCreate extends AppCompatActivity {
     private CreditCardValidator cardValidator;
-    private EditText number = (EditText)findViewById(R.id.number);
-    private EditText owner = (EditText)findViewById(R.id.owner);
-    private EditText validDate = (EditText)findViewById(R.id.validDate);
-    private EditText ccv = (EditText)findViewById(R.id.ccv);
+    private EditText number;
+    private EditText owner;
+    private EditText validDate;
+    private EditText ccv;
+    private EditText cardName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class CreditCardCreate extends AppCompatActivity {
         owner = findViewById(R.id.owner);
         validDate = findViewById(R.id.validDate);
         ccv = findViewById(R.id.ccv);
+        cardName = findViewById(R.id.card_name);
     }
 
     public void createCreditCard(View view) {
@@ -43,6 +45,7 @@ public class CreditCardCreate extends AppCompatActivity {
         card.setNumber(number.getText().toString());
         card.setOwner(owner.getText().toString());
         card.setValidDate(validDate.getText().toString());
+        card.setName(cardName.getText().toString());
 
         if (cardValidator.validate(card) == false){
             Toast.makeText(getApplicationContext(), cardValidator.getMessage(), Toast.LENGTH_LONG).show();

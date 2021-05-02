@@ -12,6 +12,7 @@ import com.example.bamprojekt.AppDatabase;
 import com.example.bamprojekt.R;
 import com.example.bamprojekt.models.User;
 import com.example.bamprojekt.dao.UserDao;
+import com.example.bamprojekt.validators.InputValidator;
 
 import static com.example.bamprojekt.cryptography.HashGenerator.generateHash;
 import static com.example.bamprojekt.validators.InputValidator.validateUser;
@@ -29,15 +30,15 @@ public class Registration extends AppCompatActivity {
         EditText password = (EditText) findViewById(R.id.password);
 
         User newUser = new User();
-        String hashedPassword = generateHash(password.getText().toString());
-        newUser.setPassword(hashedPassword);
+        newUser.setPassword(password.getText().toString());
         newUser.setUsername(username.getText().toString());
 
-        if (validateUser((newUser)) == false){
+        if (InputValidator.validateUser(newUser) == false){
             Toast.makeText(getApplicationContext(), "All fields must be filled!!!", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        newUser.setPassword(generateHash(newUser.getPassword()));
         AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
         UserDao userDao = appDatabase.userDao();
         new Thread(() -> registerUser(newUser, userDao))

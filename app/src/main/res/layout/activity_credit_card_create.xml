@@ -1,52 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".creditCard.CreditCardCreate"
-android:orientation="vertical">
-
-<TextView
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Create new credit card"
-    style = "@style/TextAppearance.AppCompat.Headline"
-    android:textSize = "25sp"
-    android:textAlignment="center"
-    android:layout_margin="20sp"/>
+    tools:context=".creditCard.CreditCardCreate">
 
-<EditText
+    <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20sp"
-    android:hint = "Enter card number"
-    android:id="@+id/number" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20sp"
-    android:hint = "Enter valid thru date"
-    android:id="@+id/validDate" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create new credit card"
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:textSize = "25sp"
+        android:textAlignment="center"
+        android:layout_margin="20sp"/>
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20sp"
-    android:hint = "Enter ccv"
-    android:id="@+id/ccv" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:hint = "Enter name for your cardt (e.g. My cart)"
+        android:id="@+id/card_name" />
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20sp"
-    android:hint = "Enter owner name"
-    android:id="@+id/owner" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:hint = "Enter 16 digit card number"
+        android:id="@+id/number" />
 
-<Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="20sp"
-    android:text="Create"
-    android:onClick="createCreditCard"/>
-</LinearLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:hint = "Enter valid thru date (format dd/yy)"
+        android:id="@+id/validDate" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:hint = "Enter ccv"
+        android:id="@+id/ccv" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:hint = "Enter owner name"
+        android:id="@+id/owner" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:text="Create"
+        android:onClick="createCreditCard"/>
+    </LinearLayout>
+</ScrollView>

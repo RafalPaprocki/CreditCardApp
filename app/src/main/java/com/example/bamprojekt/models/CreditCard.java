@@ -9,6 +9,9 @@ public class CreditCard {
     @PrimaryKey(autoGenerate = true)
     Integer id;
 
+    @ColumnInfo(name = "name")
+    String name;
+
     @ColumnInfo(name = "number")
     String number;
 
@@ -20,6 +23,14 @@ public class CreditCard {
 
     @ColumnInfo(name = "owner")
     String owner;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;

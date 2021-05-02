@@ -11,4 +11,13 @@ public class InputValidator {
         }
         return true;
     }
+
+    public static boolean validateInput(String username, String password){
+        if (username.isEmpty() ||
+                password.isEmpty() ) {
+            return false;
+        }
+        return true;
+    }
+
 }

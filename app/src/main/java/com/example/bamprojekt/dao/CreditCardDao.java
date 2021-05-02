@@ -5,7 +5,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.bamprojekt.models.CreditCard;
-import com.example.bamprojekt.models.User;
 
 import java.util.List;
 
