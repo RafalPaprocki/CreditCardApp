@@ -91,7 +91,7 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 intent.putExtra("cardId", cardId);
                 context.startActivity(intent);
 
-                Toast.makeText(context, "Details", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Edit", Toast.LENGTH_SHORT).show();
             }
         });
 
