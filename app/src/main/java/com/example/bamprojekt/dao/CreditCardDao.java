@@ -15,4 +15,10 @@ public interface CreditCardDao {
 
     @Query("Select * from creditCards")
     List<CreditCard> getAllCreditCards();
+
+    @Query("Select name from creditCards")
+    List<String> getNamesOfAllCreditCards();
+
+    @Query("Select * from creditCards where id = (:cardId)")
+    CreditCard getCreditCardDetails(int cardId);
 }
