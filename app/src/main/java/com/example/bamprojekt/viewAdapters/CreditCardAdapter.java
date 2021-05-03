@@ -28,7 +28,7 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 {
     private Context context;
     private List<CreditCard> cardNames;
-
+    private OnDelete onDelete;
     public CreditCardAdapter(Context context, List<CreditCard> cardNames)
     {
         this.context = context;
@@ -71,8 +71,13 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             @Override
             public void onClick(View v)
             {
-                
-                Toast.makeText(context, "Delete", Toast.LENGTH_SHORT).show();
+                int cardId = cardNames.get(position).getId();
+                cardNames.remove(position);
+                notifyItemRemoved(position);
+                if (onDelete != null) {
+                    onDelete.OnDeleteAction(cardId);
+                }
+                Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -111,20 +116,8 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         return cardNames.size();
     }
 
-    public void addItem(String title)
-    {
-
-        notifyItemInserted(cardNames.size() - 1);
-    }
-
-    public void remove(String title)
-    {
-        int position = cardNames.indexOf(title);
-        if (position > -1)
-        {
-            cardNames.remove(position);
-            notifyItemRemoved(position);
-        }
+    public void setOnDelete(OnDelete onDelete) {
+        this.onDelete = onDelete;
     }
 
     protected class CardItem extends RecyclerView.ViewHolder
@@ -144,4 +137,9 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             detailsButton = itemView.findViewById(R.id.detail_button);
         }
     }
+
+    public interface OnDelete {
+        void OnDeleteAction(int cardId);
+    }
 }
+

@@ -1,6 +1,7 @@
 package com.example.bamprojekt.dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -17,6 +18,9 @@ public interface CreditCardDao {
     @Update()
     void editCard(CreditCard card);
 
+    @Query("DELETE FROM creditCards WHERE id = :cardId") //delete by id
+    void deleteByCardId(long cardId);
+
     @Query("Select * from creditCards")
     List<CreditCard> getAllCreditCards();
 
@@ -25,4 +29,6 @@ public interface CreditCardDao {
 
     @Query("Select * from creditCards where id = (:cardId)")
     CreditCard getCreditCardDetails(int cardId);
+
+
 }

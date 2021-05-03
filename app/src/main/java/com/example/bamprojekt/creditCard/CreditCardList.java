@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +27,6 @@ public class CreditCardList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_credit_card_list);
-
         try {
             displayListOfCards();
         } catch(Exception e){
@@ -47,11 +47,19 @@ public class CreditCardList extends AppCompatActivity {
         getDataThread.join();
 
         CreditCardAdapter adapter = new CreditCardAdapter(this, cardNamesList);
+        adapter.setOnDelete(this::deleteCard);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+    }
+
+    public void deleteCard(int cardId) {
+        AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
+        CreditCardDao creditCardDao = appDatabase.creditCardDao();
+        new Thread(() -> creditCardDao.deleteByCardId(cardId))
+                .start();
     }
 }

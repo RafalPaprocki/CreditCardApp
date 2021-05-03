@@ -26,6 +26,6 @@ android:orientation="vertical">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20sp"
-    android:text="Show my credit cards"
+    android:text="Add credit card"
     android:onClick="addCreditCard"/>
 </LinearLayout>
