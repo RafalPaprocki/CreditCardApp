@@ -12,6 +12,7 @@ import android.util.Log;
 import com.example.bamprojekt.AppDatabase;
 import com.example.bamprojekt.R;
 import com.example.bamprojekt.dao.CreditCardDao;
+import com.example.bamprojekt.models.CreditCard;
 import com.example.bamprojekt.viewAdapters.CreditCardAdapter;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class CreditCardList extends AppCompatActivity {
 
-    List<String> cardNamesList;
+    List<CreditCard> cardNamesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class CreditCardList extends AppCompatActivity {
     private void getCardList() {
         AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
         CreditCardDao creditCardDao = appDatabase.creditCardDao();
-        List<String> names = creditCardDao.getNamesOfAllCreditCards();
+        List<CreditCard> names = creditCardDao.getAllCreditCards();
         cardNamesList = names;
     }
 

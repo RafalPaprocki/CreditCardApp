@@ -1,6 +1,7 @@
 package com.example.bamprojekt.viewAdapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bamprojekt.R;
+import com.example.bamprojekt.autorization.LoginActivity;
+import com.example.bamprojekt.creditCard.CreditCardActivity;
+import com.example.bamprojekt.creditCard.CreditCardDetails;
+import com.example.bamprojekt.models.CreditCard;
 
 import java.util.List;
 
@@ -21,12 +26,12 @@ import java.util.List;
 public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
     private Context context;
-    private List<String> titles;
+    private List<CreditCard> cardNames;
 
-    public CreditCardAdapter(Context context, List<String> titles)
+    public CreditCardAdapter(Context context, List<CreditCard> cardNames)
     {
         this.context = context;
-        this.titles = titles;
+        this.cardNames = cardNames;
     }
 
     @NonNull
@@ -35,7 +40,6 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     {
         RecyclerView.ViewHolder viewHolder;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-
         viewHolder = getViewHolder(parent, inflater);
 
         return viewHolder;
@@ -55,7 +59,7 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         CardItem CardItem = (CardItem) holder;
 
         // set title for each item:
-        CardItem.cardName.setText(titles.get(position));
+        CardItem.cardName.setText(cardNames.get(position).getName());
         CardItem.deleteButton.setText("Delete");
         CardItem.editButton.setText("Edit");
         CardItem.detailsButton.setText("Details");
@@ -87,6 +91,12 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             @Override
             public void onClick(View v)
             {
+                int cardId = cardNames.get(position).getId();
+                Intent intent = new Intent(context, CreditCardDetails.class);
+                intent.putExtra("cardId", cardId);
+                context.startActivity(intent);
+
+
                 Toast.makeText(context, "Details", Toast.LENGTH_SHORT).show();
             }
         });
@@ -95,23 +105,21 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public int getItemCount()
     {
-        return titles.size();
+        return cardNames.size();
     }
 
-    // add item to list:
     public void addItem(String title)
     {
-        titles.add(title);
-        notifyItemInserted(titles.size() - 1);
+
+        notifyItemInserted(cardNames.size() - 1);
     }
 
-    // remove item from list:
     public void remove(String title)
     {
-        int position = titles.indexOf(title);
+        int position = cardNames.indexOf(title);
         if (position > -1)
         {
-            titles.remove(position);
+            cardNames.remove(position);
             notifyItemRemoved(position);
         }
     }

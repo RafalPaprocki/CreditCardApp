@@ -1,9 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".creditCard.CreditCardDetails">
+    tools:context=".autorization.Registration"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Details for card "
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:textSize = "25sp"
+        android:textAlignment="center"
+        android:layout_margin="20sp"
+        android:id="@+id/details_name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Number: "
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:textSize = "20sp"
+        android:textAlignment="center"
+        android:layout_margin="20sp"
+        android:id="@+id/details_number"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CCV: "
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:textSize = "20sp"
+        android:textAlignment="center"
+        android:layout_margin="20sp"
+        android:id="@+id/details_ccv"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valid date: "
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:textSize = "20sp"
+        android:textAlignment="center"
+        android:layout_margin="20sp"
+        android:id="@+id/details_valid_date"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Owner: "
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:textSize = "20sp"
+        android:textAlignment="center"
+        android:layout_margin="20sp"
+        android:id="@+id/details_owner"/>
+</LinearLayout>
