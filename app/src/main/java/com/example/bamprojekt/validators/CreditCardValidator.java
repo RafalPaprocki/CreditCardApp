@@ -5,7 +5,7 @@ import com.example.bamprojekt.models.CreditCard;
 public class CreditCardValidator {
     private String message;
     private final String numberPattern = "[\\d]{16}";
-    private final String validDatePattern = "[0-2]{1}[0-9]{1}/[0-9]{2}";
+    private final String validDatePattern = "[0-1]{1}[0-9]{1}/[0-9]{2}";
     private final String ccvPattern = "[0-9]{3}";
 
     public boolean validate(CreditCard card){

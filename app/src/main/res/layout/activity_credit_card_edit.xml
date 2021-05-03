@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".creditCard.CreditCardEdit"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit card"
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:textSize = "25sp"
+        android:textAlignment="center"
+        android:layout_margin="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Card number"
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginHorizontal="20sp"
+        android:textSize = "15sp"
+        android:textAlignment="center" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="10sp"
+        android:id="@+id/edit_card_number" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CCV"
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginHorizontal="20sp"
+        android:textSize = "15sp"
+        android:textAlignment="center" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:hint = "Enter username"
+        android:id="@+id/edit_ccv"
+        android:layout_marginBottom="10sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valid date"
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginHorizontal="20sp"
+        android:textSize = "15sp"
+        android:textAlignment="center" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:id="@+id/edit_valid_date"
+        android:layout_marginBottom="10sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Owner"
+        style = "@style/TextAppearance.AppCompat.Headline"
+        android:layout_marginHorizontal="20sp"
+        android:textSize = "15sp"
+        android:textAlignment="center" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:id="@+id/edit_owner"
+        android:layout_marginBottom="10sp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:text="Save"
+        android:onClick="saveEdited"/>
+
+</LinearLayout>

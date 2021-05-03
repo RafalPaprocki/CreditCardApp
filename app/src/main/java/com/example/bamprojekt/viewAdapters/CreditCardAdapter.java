@@ -17,6 +17,7 @@ import com.example.bamprojekt.R;
 import com.example.bamprojekt.autorization.LoginActivity;
 import com.example.bamprojekt.creditCard.CreditCardActivity;
 import com.example.bamprojekt.creditCard.CreditCardDetails;
+import com.example.bamprojekt.creditCard.CreditCardEdit;
 import com.example.bamprojekt.models.CreditCard;
 
 import java.util.List;
@@ -58,7 +59,6 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     {
         CardItem CardItem = (CardItem) holder;
 
-        // set title for each item:
         CardItem.cardName.setText(cardNames.get(position).getName());
         CardItem.deleteButton.setText("Delete");
         CardItem.editButton.setText("Edit");
@@ -66,23 +66,27 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         CardItem.deleteButton.setBackgroundColor(Color.parseColor("#ff0000"));
         CardItem.editButton.setBackgroundColor(Color.parseColor("#00ff00"));
 
-        // click listener for first button:
         CardItem.deleteButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                
                 Toast.makeText(context, "Delete", Toast.LENGTH_SHORT).show();
             }
         });
 
-        // click listener for second button:
         CardItem.editButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(context, "Edit", Toast.LENGTH_SHORT).show();
+                int cardId = cardNames.get(position).getId();
+                Intent intent = new Intent(context, CreditCardEdit.class);
+                intent.putExtra("cardId", cardId);
+                context.startActivity(intent);
+
+                Toast.makeText(context, "Details", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -95,7 +99,6 @@ public class CreditCardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Intent intent = new Intent(context, CreditCardDetails.class);
                 intent.putExtra("cardId", cardId);
                 context.startActivity(intent);
-
 
                 Toast.makeText(context, "Details", Toast.LENGTH_SHORT).show();
             }

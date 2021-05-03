@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BAMProjekt">
-        <activity android:name=".creditCard.CreditCardDetails"></activity>
+        <activity android:name=".creditCard.CreditCardEdit"></activity>
+        <activity android:name=".creditCard.CreditCardDetails" />
         <activity android:name=".creditCard.CreditCardCreate" />
         <activity android:name=".creditCard.CreditCardList" />
         <activity android:name=".autorization.Registration" />
@@ -18,6 +19,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
