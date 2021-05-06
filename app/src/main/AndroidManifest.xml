@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BAMProjekt">
+        <provider
+            android:name=".contentProviders.CreditCardProvider"
+            android:authorities="com.provider.bamprojekt"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:enabled="true">
+        </provider>
+
         <activity android:name=".creditCard.CreditCardEdit"></activity>
         <activity android:name=".creditCard.CreditCardDetails" />
         <activity android:name=".creditCard.CreditCardCreate" />

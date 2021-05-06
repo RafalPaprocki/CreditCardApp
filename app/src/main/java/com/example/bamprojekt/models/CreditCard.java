@@ -71,18 +71,4 @@ public class CreditCard {
     public void setOwner(String owner) {
         this.owner = owner;
     }
-
-    /*
-     Method encrypt such data as card number , owner , ccv and valid_thru
-    */
-    public void encryptSensitiveData () {
-
-    }
-
-    /*
-     Method decrypt such data as card number , owner , ccv and valid_thru
-    */
-    public void decryptSensitiveData() {
-
-    }
 }

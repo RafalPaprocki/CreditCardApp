@@ -1,5 +1,7 @@
 package com.example.bamprojekt.dao;
 
+import android.database.Cursor;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -30,5 +32,6 @@ public interface CreditCardDao {
     @Query("Select * from creditCards where id = (:cardId)")
     CreditCard getCreditCardDetails(int cardId);
 
-
+    @Query("Select * From creditCards")
+    Cursor getCursorAll();
 }
