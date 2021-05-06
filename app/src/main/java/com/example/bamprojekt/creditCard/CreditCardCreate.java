@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import com.example.bamprojekt.AppDatabase;
 import com.example.bamprojekt.R;
 import com.example.bamprojekt.autorization.LoginActivity;
+import com.example.bamprojekt.cryptography.CryptoService;
 import com.example.bamprojekt.dao.CreditCardDao;
 import com.example.bamprojekt.dao.UserDao;
 import com.example.bamprojekt.models.CreditCard;
@@ -51,7 +53,14 @@ public class CreditCardCreate extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), cardValidator.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
-
+        try {
+            card.setCcv( CryptoService.encrypt(card.getCcv()));
+            card.setNumber( CryptoService.encrypt(card.getNumber()));
+            card.setOwner( CryptoService.encrypt(card.getOwner()));
+            card.setValidDate( CryptoService.encrypt(card.getValidDate()));
+        } catch (Exception ex) {
+            Log.d("Exception", ex.getMessage());
+        }
         AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
         CreditCardDao creditCardDao = appDatabase.creditCardDao();
         new Thread(() -> insertNewCard(card, creditCardDao))

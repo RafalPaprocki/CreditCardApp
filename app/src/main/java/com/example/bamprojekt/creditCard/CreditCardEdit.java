@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.bamprojekt.AppDatabase;
 import com.example.bamprojekt.R;
+import com.example.bamprojekt.cryptography.CryptoService;
 import com.example.bamprojekt.dao.CreditCardDao;
 import com.example.bamprojekt.models.CreditCard;
 import com.example.bamprojekt.validators.CreditCardValidator;
@@ -53,6 +54,15 @@ public class CreditCardEdit extends AppCompatActivity {
             return;
         }
 
+        try {
+            card.setCcv( CryptoService.encrypt(card.getCcv()));
+            card.setNumber( CryptoService.encrypt(card.getNumber()));
+            card.setOwner( CryptoService.encrypt(card.getOwner()));
+            card.setValidDate( CryptoService.encrypt(card.getValidDate()));
+        } catch (Exception ex) {
+            Log.d("Exception", ex.getMessage());
+        }
+
         new Thread(() -> editCard(card))
                 .start();
     }
@@ -85,6 +95,14 @@ public class CreditCardEdit extends AppCompatActivity {
     }
 
     private void setEditedValues(){
+        try {
+            card.setCcv(CryptoService.decrypt(card.getCcv()));
+            card.setNumber(CryptoService.decrypt(card.getNumber()));
+            card.setOwner(CryptoService.decrypt(card.getOwner()));
+            card.setValidDate(CryptoService.decrypt(card.getValidDate()));
+        } catch (Exception ex) {
+            Log.d("Error", ex.getMessage());
+        }
         number.setText(card.getNumber());
         ccv.setText(card.getCcv());
         owner.setText(card.getOwner());
