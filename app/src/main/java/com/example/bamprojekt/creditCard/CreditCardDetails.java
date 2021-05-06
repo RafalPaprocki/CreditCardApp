@@ -58,14 +58,7 @@ public class CreditCardDetails extends AppCompatActivity {
     }
 
     private void setDetailViewInfo(CreditCard cardDetails) {
-        try {
-            cardDetails.setCcv(CryptoService.decrypt(cardDetails.getCcv()));
-            cardDetails.setNumber(CryptoService.decrypt(cardDetails.getNumber()));
-            cardDetails.setOwner(CryptoService.decrypt(cardDetails.getOwner()));
-            cardDetails.setValidDate(CryptoService.decrypt(cardDetails.getValidDate()));
-        } catch (Exception ex) {
-            Log.d("Error", ex.getMessage());
-        }
+        cardDetails = CreditCardService.decryptSensitiveData(cardDetails);
         detailsName.setText(detailsName.getText() + cardDetails.getName());
         cardNumber.setText(cardNumber.getText() + cardDetails.getNumber());
         ccv.setText(ccv.getText() + cardDetails.getCcv());

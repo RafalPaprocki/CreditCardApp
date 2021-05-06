@@ -27,7 +27,7 @@ public class CreditCardCreate extends AppCompatActivity {
     private EditText validDate;
     private EditText ccv;
     private EditText cardName;
-
+    private CreditCard card;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ public class CreditCardCreate extends AppCompatActivity {
     }
 
     public void createCreditCard(View view) {
-        CreditCard card = new CreditCard();
+        card = new CreditCard();
         card.setCcv(ccv.getText().toString());
         card.setNumber(number.getText().toString());
         card.setOwner(owner.getText().toString());
@@ -53,22 +53,16 @@ public class CreditCardCreate extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), cardValidator.getMessage(), Toast.LENGTH_LONG).show();
             return;
         }
-        try {
-            card.setCcv( CryptoService.encrypt(card.getCcv()));
-            card.setNumber( CryptoService.encrypt(card.getNumber()));
-            card.setOwner( CryptoService.encrypt(card.getOwner()));
-            card.setValidDate( CryptoService.encrypt(card.getValidDate()));
-        } catch (Exception ex) {
-            Log.d("Exception", ex.getMessage());
-        }
-        AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
-        CreditCardDao creditCardDao = appDatabase.creditCardDao();
-        new Thread(() -> insertNewCard(card, creditCardDao))
+        card = CreditCardService.encryptSensitiveData(card);
+
+        new Thread(() -> insertNewCard(card))
                 .start();
     }
 
-    private void insertNewCard(CreditCard card, CreditCardDao cardDao) {
-        cardDao.addCard(card);
+    private void insertNewCard(CreditCard card) {
+        AppDatabase appDatabase = AppDatabase.getAppDatabase(getApplicationContext());
+        CreditCardDao creditCardDao = appDatabase.creditCardDao();
+        creditCardDao.addCard(card);
         runOnUiThread(() -> Toast.makeText(getApplicationContext(), "Cart successfully added :)", Toast.LENGTH_SHORT).show());
         Intent intent = new Intent(this, CreditCardActivity.class);
         startActivity(intent);
