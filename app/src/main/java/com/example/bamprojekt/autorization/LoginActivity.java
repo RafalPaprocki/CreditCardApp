@@ -3,8 +3,10 @@ package com.example.bamprojekt.autorization;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,10 +19,13 @@ import com.example.bamprojekt.creditCard.CreditCardActivity;
 import static com.example.bamprojekt.cryptography.HashGenerator.generateHash;
 
 public class LoginActivity extends AppCompatActivity {
+    private CheckBox rememberMe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        rememberMe = findViewById(R.id.remember_me);
     }
 
     public void loginUser(View view){
@@ -53,8 +58,15 @@ public class LoginActivity extends AppCompatActivity {
             runOnUiThread(() ->  Toast.makeText(getApplicationContext(),"Invalid username or password", Toast.LENGTH_SHORT).show());
             return;
         }
-
+        rememberMe(rememberMe.isChecked());
         runOnUiThread(() -> Toast.makeText(getApplicationContext(), "Successfully logged in", Toast.LENGTH_SHORT).show());
         startActivity(new Intent(LoginActivity.this, CreditCardActivity.class));
+    }
+
+    private void rememberMe(boolean rememberMe){
+        SharedPreferences preferences = getSharedPreferences("autologin", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("rememberMe", rememberMe);
+        editor.apply();
     }
 }

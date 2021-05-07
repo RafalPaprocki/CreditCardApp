@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:andorid="http://schemas.android.com/apk/res-auto"
     tools:context=".autorization.LoginActivity"
     android:orientation="vertical">
 
@@ -29,6 +30,14 @@
         android:layout_margin="20sp"
         android:hint = "Enter password"
         android:id="@+id/password" />
+
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20sp"
+        android:text="Remember me"
+        android:id="@+id/remember_me"/>
 
     <Button
         android:layout_width="match_parent"

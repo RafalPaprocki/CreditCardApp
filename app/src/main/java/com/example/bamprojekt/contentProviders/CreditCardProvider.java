@@ -23,9 +23,9 @@ public class CreditCardProvider extends ContentProvider {
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
-        uriMatcher.addURI(PROVIDER_NAME, "creditCards", uriCode);
+        uriMatcher.addURI(PROVIDER_NAME, "cards", uriCode);
 
-        uriMatcher.addURI(PROVIDER_NAME, "creditCards/*", uriCode);
+        uriMatcher.addURI(PROVIDER_NAME, "cards/*", uriCode);
     }
 
     @Override
