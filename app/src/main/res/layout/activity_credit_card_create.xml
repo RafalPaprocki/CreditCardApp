@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:hint = "Enter name for your cardt (e.g. My cart)"
+        android:hint = "Enter name for your card (e.g. My cart)"
         android:id="@+id/card_name" />
 
     <EditText
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20sp"
-        android:hint = "Enter valid thru date (format dd/yy)"
+        android:hint = "Enter valid thru date (format mm/yy)"
         android:id="@+id/validDate" />
 
     <EditText
