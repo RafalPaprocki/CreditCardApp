@@ -2,12 +2,14 @@ package com.example.bamprojekt.creditCard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.bamprojekt.AppDatabase;
+import com.example.bamprojekt.MainActivity;
 import com.example.bamprojekt.R;
 import com.example.bamprojekt.backup.BackupManager;
 import com.example.bamprojekt.dao.CreditCardDao;
@@ -48,6 +50,8 @@ public class CreditCardExport extends AppCompatActivity {
         }
         BackupManager.exportCreditCardData(dataToExport, fileNameString, keyString, getApplicationContext());
         Toast.makeText(getApplicationContext(), "Data exported to " + getExternalFilesDir(null).getPath(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(CreditCardExport.this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void getCreditCardData() {

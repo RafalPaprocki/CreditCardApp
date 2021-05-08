@@ -11,7 +11,7 @@ import com.example.bamprojekt.dao.UserDao;
 import com.example.bamprojekt.models.CreditCard;
 import com.example.bamprojekt.models.User;
 
-@Database(entities = {User.class, CreditCard.class}, version = 5)
+@Database(entities = {User.class, CreditCard.class}, version = 5, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String dbName = "CreditCardApp.db";
     private static AppDatabase appDatabase;
