@@ -28,4 +28,11 @@ android:orientation="vertical">
     android:layout_margin="20sp"
     android:text="Add credit card"
     android:onClick="addCreditCard"/>
+
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20sp"
+    android:text="Export credit card data"
+    android:onClick="exportCreditCard"/>
 </LinearLayout>

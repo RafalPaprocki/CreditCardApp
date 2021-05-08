@@ -2,6 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bamprojekt">
 
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <permission
+        android:name="com.example.READ_DATABASE"
+        android:protectionLevel="dangerous" />
+    <permission
+        android:name="com.example.WRITE_DATABASE"
+        android:protectionLevel="signature" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,15 +22,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BAMProjekt">
+        <activity android:name=".creditCard.CreditCardExport"></activity>
+
         <provider
             android:name=".contentProviders.CreditCardProvider"
             android:authorities="com.provider.bamprojekt"
+            android:enabled="true"
             android:exported="true"
-            android:grantUriPermissions="true"
-            android:enabled="true">
-        </provider>
+            android:readPermission="com.example.READ_DATABASE"
+            android:writePermission="com.example.WRITE_DATABASE"></provider>
 
-        <activity android:name=".creditCard.CreditCardEdit"></activity>
+        <activity android:name=".creditCard.CreditCardEdit" />
         <activity android:name=".creditCard.CreditCardDetails" />
         <activity android:name=".creditCard.CreditCardCreate" />
         <activity android:name=".creditCard.CreditCardList" />

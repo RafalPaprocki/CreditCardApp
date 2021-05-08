@@ -37,11 +37,17 @@ public class CreditCardActivity extends AppCompatActivity {
             Log.d("MainActivity", "No records found");
         }
         */
+
         startActivity(intent);
     }
 
     public void addCreditCard(View view) {
         Intent intent = new Intent(CreditCardActivity.this, CreditCardCreate.class);
+        startActivity(intent);
+    }
+
+    public void exportCreditCard(View view) {
+        Intent intent = new Intent(CreditCardActivity.this, CreditCardExport.class);
         startActivity(intent);
     }
 }

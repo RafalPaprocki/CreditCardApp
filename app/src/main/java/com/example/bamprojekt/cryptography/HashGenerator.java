@@ -8,9 +8,13 @@ import java.security.NoSuchAlgorithmException;
 
 public class HashGenerator {
     public static String generateHash(String hashingEntry) {
+        return generateHash(hashingEntry, "SHA-512");
+    }
+
+    public static String generateHash(String hashingEntry, String hashingAlgorithm) {
         String hashedString = null;
         try{
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            MessageDigest md = MessageDigest.getInstance(hashingAlgorithm);
             byte[] hashedPassword = md.digest(hashingEntry.getBytes(StandardCharsets.UTF_8));
             hashedString = new String(hashedPassword, StandardCharsets.UTF_8);
 
