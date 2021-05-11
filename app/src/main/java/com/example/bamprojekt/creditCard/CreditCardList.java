@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.example.bamprojekt.AppDatabase;
 import com.example.bamprojekt.R;
@@ -32,6 +33,7 @@ public class CreditCardList extends AppCompatActivity {
         } catch(Exception e){
             Log.d("Exception", e.getMessage());
         }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     private void getCardList() {

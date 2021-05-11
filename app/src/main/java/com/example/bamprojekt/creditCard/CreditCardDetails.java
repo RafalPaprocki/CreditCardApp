@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.bamprojekt.AppDatabase;
@@ -36,6 +37,7 @@ public class CreditCardDetails extends AppCompatActivity {
         } catch (Exception ex) {
             Log.d("Exception" , ex.getMessage());
         }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     private void setCardId(){

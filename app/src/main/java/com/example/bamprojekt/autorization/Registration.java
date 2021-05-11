@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     public void register(View view) {
@@ -34,7 +36,7 @@ public class Registration extends AppCompatActivity {
         newUser.setUsername(username.getText().toString());
 
         if (InputValidator.validateUser(newUser) == false){
-            Toast.makeText(getApplicationContext(), "All fields must be filled!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Bad input data (password should consist of at least 8 letter and at least one number and one uppercase letter)", Toast.LENGTH_LONG).show();
             return;
         }
 

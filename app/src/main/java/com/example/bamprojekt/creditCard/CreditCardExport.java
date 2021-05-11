@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class CreditCardExport extends AppCompatActivity {
         exportInputValidator = new CreditCardExportValidator();
         fileName =  findViewById(R.id.export_file_name);
         key =  findViewById(R.id.export_key);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     public void exportData(View view) {

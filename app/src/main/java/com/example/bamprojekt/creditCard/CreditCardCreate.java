@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class CreditCardCreate extends AppCompatActivity {
         validDate = findViewById(R.id.validDate);
         ccv = findViewById(R.id.ccv);
         cardName = findViewById(R.id.card_name);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     }
 
     public void createCreditCard(View view) {
