@@ -52,7 +52,7 @@ public class CreditCardExport extends AppCompatActivity {
         }
         BackupManager.exportCreditCardData(dataToExport, fileNameString, keyString, getApplicationContext());
         Toast.makeText(getApplicationContext(), "Data exported to " + getExternalFilesDir(null).getPath(), Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(CreditCardExport.this, MainActivity.class);
+        Intent intent = new Intent(CreditCardExport.this, CreditCardActivity.class);
         startActivity(intent);
     }
 

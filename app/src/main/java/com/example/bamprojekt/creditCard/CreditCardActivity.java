@@ -24,22 +24,6 @@ public class CreditCardActivity extends AppCompatActivity {
 
     public void creditCardList(View view) {
         Intent intent = new Intent(CreditCardActivity.this, CreditCardList.class);
-
-        /*
-        ContentResolver cr = getContentResolver();
-        Cursor cursor = cr.query(Uri.parse("content://com.provider.bamprojekt/cards"), null, null, null, null);
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
-                String str = ("\n" + cursor.getString(cursor.getColumnIndex("name")));
-                Log.d("MainActivity", str);
-                cursor.moveToNext();
-            }
-
-        } else {
-            Log.d("MainActivity", "No records found");
-        }
-        */
-
         startActivity(intent);
     }
 
